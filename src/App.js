@@ -13,6 +13,9 @@ function App() {
             setH3("Tytul jest daijobu");
         }
     }
+    function handleClick() {
+        alert(title);
+    }
 
 
     return (
@@ -22,6 +25,7 @@ function App() {
 
             <h3>{h3}</h3>
             <input type="text" onChange={handleChange} value={title}/>
+            <input type="button" onClick={handleClick} value={"Kliknij nie wstydz się"}/>
         </div>
     );
 }
