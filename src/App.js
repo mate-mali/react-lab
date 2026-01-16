@@ -2,43 +2,50 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 function App() {
-    const [title, setTitle] = useState('Fight Club');
-    const [h3, setH3] = useState('Wpisz coś czarodzieju');
+    const [title, setTitle] = useState('');
+    const [yearx, setYearx] = useState('');
+    const [h3, setH3] = useState('Add title longer than 3 characters');
     const [movies, setMovies] = useState([
-        {title: "Wall-E"},
-        {title: "Pulp Fiction"},
-        {title: "Matrix"},
-        {title: "1670"}
     ]);
     function handleChange(event) {
         //console.log(event.target.value);
         setTitle(event.target.value);
         if(event.target.value.length <= 3){
-            setH3("Tytul ma mniej niż 3 znaki");
+            setH3("Title must have 4 or more characters!");
         } else {
-            setH3("Tytul jest daijobu");
+            setH3("Title is daijobu enough");
         }
     }
+    function handleYearx(event) {setYearx(event.target.value);}
+
     function handleClick() {
-        alert(title);
+        if(title.length <= 3){
+            alert("Title must have 4 or more characters!");
+            return;
+        } 
+        else if(yearx.length !== 4 || isNaN(yearx)){
+            alert("Year must have 4 digits!");
+            return;
+        } else {
         setMoviesList();
+        }
     }
-    function setMoviesList() {
-      setMovies([...movies, {title: title}]);
-    }
+    function setMoviesList() {setMovies([...movies, {title: `${title} (${yearx})`}]);}
     
     return (
         <div>
             <h1>My favourite movies to watch</h1>
-            <h3>Titles</h3>
             <ul>
               {movies.map((movie)=> <li key={movie.title}>{movie.title}</li>)}
             </ul>
-            <h2>My favourite movie for today is {title}</h2>
-            <h4>{h3}</h4>
-            <input type="text" onChange={handleChange} value={title}/>
-            <input type="button" onClick={handleClick} value={"Kliknij nie wstydz się"}/>
+            <h3>Title</h3>
             
+            <input type="text" onChange={handleChange} value={title}/>
+            <br/>
+            <text>{h3}</text>
+            <h3>Year</h3>
+            <input type="text" onChange={handleYearx} value={yearx}/> <br></br>
+            <input type="button" onClick={handleClick} value={"Add record"}/>
         </div>
     );
 }
