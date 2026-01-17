@@ -9,7 +9,6 @@ function App() {
     const [movies, setMovies] = useState([
     ]);
     function handleChange(event) {
-        //console.log(event.target.value);
         setTitle(event.target.value);
         if(event.target.value.length <= 3){
             setH3("Title must have 4 or more characters!");
@@ -28,25 +27,35 @@ function App() {
             alert("Year must have 4 digits!");
             return;
         } else {
-        setMoviesList();
+            handleAddmoviesProper()
         }
     }
-    function setMoviesList() {setMovies([...movies, {title: `${title} (${yearx})`}]);}
+
+    function handleAddmoviesProper () {
+        const movie = {
+            title: title,
+            year: yearx
+        }
+        setMovies([...movies, movie])
+    }
     
     return (
         <div id='mainx' className='container'>
             <h1>My favourite movies to watch</h1>
-            <ul>
-              {movies.map((movie)=> <li key={movie.title}>{movie.title}</li>)}
-            </ul>
+            
+            
             <div id='contt' className='container'>
-            <h2>Title</h2>
+            <h2>Titles</h2>
+            <ul>
+              {movies.map((movie)=> <li key={movie.title}>{movie.title} ({movie.year})</li>)}
+            </ul>
+            
+            <h2>Add new Movie</h2>
+            <h3>Title</h3>
             <input type="text" id="inptT" onChange={handleChange} value={title}/>
-            
             <text>{h3}</text>
-            
             <br/>
-            <h2>Year</h2>
+            <h3>Year</h3>
             <input type="text" id="inptY" onChange={handleYearx} value={yearx}/> <br></br>
             <input type="button" onClick={handleClick} value={"Add record"}/>
             </div>
