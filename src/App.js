@@ -27,7 +27,9 @@ function App() {
             alert("Year must have 4 digits!");
             return;
         } else {
-            handleAddmoviesProper()
+            handleAddmoviesProper();
+            setTitle('');
+            setYearx('');
         }
     }
 
