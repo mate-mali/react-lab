@@ -34,19 +34,20 @@ function App() {
     function setMoviesList() {setMovies([...movies, {title: `${title} (${yearx})`}]);}
     
     return (
-        <div>
+        <div id='mainx' className='container'>
             <h1>My favourite movies to watch</h1>
             <ul>
               {movies.map((movie)=> <li key={movie.title}>{movie.title}</li>)}
             </ul>
-
-            <div id='contt'>
-            <h3>Title</h3>
-            <input type="text" onChange={handleChange} value={title}/>
-            <br/>
+            <div id='contt' className='container'>
+            <h2>Title</h2>
+            <input type="text" id="inptT" onChange={handleChange} value={title}/>
+            
             <text>{h3}</text>
-            <h3>Year</h3>
-            <input type="text" onChange={handleYearx} value={yearx}/> <br></br>
+            
+            <br/>
+            <h2>Year</h2>
+            <input type="text" id="inptY" onChange={handleYearx} value={yearx}/> <br></br>
             <input type="button" onClick={handleClick} value={"Add record"}/>
             </div>
         </div>
