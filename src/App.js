@@ -36,6 +36,7 @@ function App() {
             title: title,
             year: yearx
         }
+        /* spreadig collection variable */
         setMovies([...movies, movie])
     }
     
