@@ -13,7 +13,7 @@ function App() {
         if(event.target.value.length <= 3){
             setH3("Title must have 4 or more characters!");
         } else {
-            setH3("Title is daijobu enough");
+            setH3("Title is ok");
         }
     }
     function handleYearx(event) {setYearx(event.target.value);}
@@ -38,14 +38,16 @@ function App() {
             <ul>
               {movies.map((movie)=> <li key={movie.title}>{movie.title}</li>)}
             </ul>
+
+            <div id='contt'>
             <h3>Title</h3>
-            
             <input type="text" onChange={handleChange} value={title}/>
             <br/>
             <text>{h3}</text>
             <h3>Year</h3>
             <input type="text" onChange={handleYearx} value={yearx}/> <br></br>
             <input type="button" onClick={handleClick} value={"Add record"}/>
+            </div>
         </div>
     );
 }
